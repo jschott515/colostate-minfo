@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "colostate-minfo"
+version = "0.0.1"
+description = "Colorado State Machine Info Tools"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+authors = [
+    {name = "jschott", email = "jschott515@gmail.com"},
+]
+keywords = []
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests>=2.32.5",
+    "beautifulsoup4>=4.13.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/jschott515/colostate-minfo"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[project.scripts]
+minfo_ssh = "minfo.tools.minfo_ssh:main"
+
+[project.gui-scripts]
+minfo_vscode = "minfo.tools.minfo_vscode:main"

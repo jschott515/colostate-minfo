@@ -1,4 +1,5 @@
-"""Launches an SSH Session using the machine with the current lowest utilization.
+"""Launches a Vscode Remote SSH Session using the machine with the current lowest utilization.
+Assumes that the Remote SSH extension is installed.
 """
 import argparse
 import typing
@@ -7,17 +8,17 @@ import sys
 
 import minfo
 
-
-SSH_PATH = 'ssh'
-TARGET = '{username}@{machine}.cs.colostate.edu'
+VSCODE_PATH = 'code.cmd'
+TARGET = 'ssh-remote+{username}@{machine}.cs.colostate.edu'
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("USERNAME", type=str,
-                        help="Username used for SSH connection")
-    parser.add_argument("--ssh", type=str, default=SSH_PATH,
-                        help="SSH executable path")
+                        help="Username used for remote connection")
+    parser.add_argument("--code", type=str, default=VSCODE_PATH,
+                        help="Vscode executable path")
+    # FUTURE: --dir, specify a remote directory to open
     cfg = parser.parse_args(sys.argv[1:])
     return cfg
 
@@ -27,12 +28,16 @@ def get_min_usage_host(info: typing.Sequence[typing.MutableMapping[minfo.MinfoFi
     return device_info[minfo.MinfoFields.HOST]
 
 
-if __name__ == "__main__":
+def main() -> None:
     cfg = parse_args()
     username = typing.cast(str, cfg.USERNAME)
-    ssh_path = typing.cast(str, cfg.ssh)
+    code_path = typing.cast(str, cfg.code)
 
     info = minfo.fetch_machine_info()
     machine = get_min_usage_host(info)
     target = TARGET.format(username=username, machine=machine)
-    subprocess.run([ssh_path, target])
+    subprocess.run([code_path, '--remote', target, '.'])
+
+
+if __name__ == "__main__":
+    sys.exit(main())
