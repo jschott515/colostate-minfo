@@ -30,7 +30,7 @@ Homepage = "https://github.com/jschott515/colostate-minfo"
 where = ["."]
 
 [project.scripts]
-minfo_ssh = "minfo.tools.minfo_ssh:main"
+minfo_ssh = "tools.minfo_ssh:main"
 
 [project.gui-scripts]
-minfo_vscode = "minfo.tools.minfo_vscode:main"
+minfo_vscode = "tools.minfo_vscode:main"
