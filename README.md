@@ -13,9 +13,11 @@ pip install git+https://github.com/jschott515/colostate-minfo.git
 ## `minfo_ssh`
 Launches an SSH session using the machine with the lowest CPU utilization.
 Assumes that `ssh` is on the PATH. Alternatively, the path can be passed via command line.
+Includes optional filter for the machine location, i.e. --location/-l lab325 to select from available "fish" machines.
 
 ### Usage
 - `minfo_ssh <CSU NetID>`
+- `minfo_ssh <CSU NetID> --location <Desired Location>`
 
 For help:
 - `minfo_ssh --help`
@@ -36,9 +38,11 @@ A terminal profile can be created for vscode as follows:
 Launches a Vscode Remote SSH session using the machine with the lowest CPU utilization. Opens the remote machine's home directory by default.
 Assumes that the Remote SSH extension is installed in vscode.
 Assumes that `code.cmd` is on the PATH. Alternatively, the path can be passed via command line.
+Includes optional filter for the machine location, i.e. --location/-l lab325 to select from available "fish" machines.
 
 ### Usage
 - `minfo_vscode <CSU NetID>`
+- `minfo_vscode <CSU NetID> --location <Desired Location>`
 
 For help:
 - `minfo_vscode --help`
