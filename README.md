@@ -9,6 +9,7 @@ pip install git+https://github.com/jschott515/colostate-minfo.git
 ```
 
 # Minfo Tools
+The following tools are added as executables in python's 'Scripts' directory when the colostate-minfo package is pip installed. Depending on your settings, this may or may not be on the PATH. These tools can be run from the Windows Command Prompt or similar.
 
 ## `minfo_ssh`
 Launches an SSH session using the machine with the lowest CPU utilization.
